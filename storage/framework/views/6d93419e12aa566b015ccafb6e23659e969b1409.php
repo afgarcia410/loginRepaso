@@ -28,6 +28,9 @@
                 <?php if(!Auth::user() -> hasVerifiedEmail()): ?>
                     You are not verified,please <a href="<?php echo e(url('email/verify')); ?>">verify</a> your email.
                     <?php endif; ?>
+                <?php if(auth()->user()->type == 'admin'): ?>
+                    <a href="<?php echo e(url('home/index')); ?>" type="submit" value="Show User" >Show users</a>
+                <?php endif; ?>
                 </div>
                 
                 

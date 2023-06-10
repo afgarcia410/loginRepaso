@@ -1,19 +1,19 @@
 @extends('layouts.app')
 @section('content')
-<h1>Editar usuario</h1>
-<form action="{{ url('home/update') }}" method="POST" enctype="multipart/form-data">
+<h1>Editar usuariooo</h1>
+<form action="{{route('index.update',$index->id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('put')
     <div class="mb-3">
         <label>Name</label>
-        <input class="form-control" name="name" placeholder="{{auth()->user()->name}}" value= "{{auth()->user()->name}}"></input>
+        <input class="form-control" name="name" placeholder="{{$index->name}}" value= "{{$index->name}}"></input>
         @error('name')
             <span class="text-danger">{{ $message }}</span>
         @enderror
     </div>
     <div class="mb-3">
         <label>Email</label>
-        <input class="form-control" name="email" placeholder="{{auth()->user()->email}}" value= "{{auth()->user()->email}}"></input>
+        <input class="form-control" name="email" placeholder="{{$index->email}}" value= "{{$index->email}}"></input>
         @error('email')
             <span class="text-danger">{{ $message }}</span>
         @enderror
@@ -40,16 +40,19 @@
     <div class="mb-3">
         <label>Type</label>
         <select class="form-control" name="type">
-            <option value="admin" {{auth()->user()->type == 'admin' ? 'selected':''}}>Admin</option>
-            <option value="advanced" {{auth()->user()->type == 'advanced' ? 'selected':''}}>Advanced</option>
-            <option value="user" {{auth()->user()->type == 'user' ? 'selected':''}}>User</option>
+            <option value="admin" {{$index->type == 'admin' ? 'selected':''}}>Admin</option>
+            <option value="advanced" {{$index->type == 'advanced' ? 'selected':''}}>Advanced</option>
+            <option value="user" {{$index->type == 'user' ? 'selected':''}}>User</option>
         </select>
     </div>
     @else
     No eres admin,eres {{auth()->user()->type}}.
     @endif
     <div class="mb-3">
-        <button type="submit" class="btn btn-primary">Update user</button>
+        <button href="{{ url('home/index') }}" type="submit" class="btn btn-primary">Update user</button>
+    </div>
+    <div class="mb-3">
+        <a href="{{ url('home/index') }}" class="btn btn-primary">Back</a>
     </div>
     @if(session()->has('message'))
     <div class="alert alert-success">

@@ -28,6 +28,9 @@
                 @if(!Auth::user() -> hasVerifiedEmail())
                     You are not verified,please <a href="{{url('email/verify')}}">verify</a> your email.
                     @endif
+                @if(auth()->user()->type == 'admin')
+                    <a href="{{ url('home/index')}}" type="submit" value="Show User" >Show users</a>
+                @endif
                 </div>
                 
                 
