@@ -48,6 +48,13 @@
       0 => 'Termwind\\Laravel\\TermwindServiceProvider',
     ),
   ),
+  'rtconner/laravel-tagging' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'Conner\\Tagging\\Providers\\TaggingServiceProvider',
+    ),
+  ),
   'spatie/laravel-ignition' => 
   array (
     'providers' => 

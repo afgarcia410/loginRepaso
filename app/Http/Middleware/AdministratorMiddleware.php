@@ -1,0 +1,36 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class AdministratorMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure(\Illuminate\Http\Request): (\Illuminate\Http\Response|\Illuminate\Http\RedirectResponse)  $next
+     * @return \Illuminate\Http\Response|\Illuminate\Http\RedirectResponse
+     */
+    public function handle(Request $request, Closure $next)
+    {
+        
+        $user = Auth::user();
+        if($user != null && $user->type == 'admin'){
+            return $next($request);
+        } else {
+            return redirect('/');
+        //return $next($request);
+        }
+    
+    /*
+    if(Auth::check() && Auth::user()->type == $type){
+        return $next($request);
+    }
+    return response()->json(["You dont have permission to access"]);
+    */
+    }
+}
