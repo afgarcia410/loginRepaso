@@ -92,6 +92,12 @@ unset($__errorArgs, $__bag); ?>
     <div class="mb-3">
         <button type="submit" class="btn btn-primary">Update user</button>
     </div>
+    <?php if(session()->has('message')): ?>
+    <div class="alert alert-success">
+        <?php echo e(session()->get('message')); ?>
+
+    </div>
+<?php endif; ?>
 </form>
 <?php $__env->stopSection(); ?>
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH /var/www/html/laravel/GestionUserRepaso/resources/views/user/edit.blade.php ENDPATH**/ ?>
